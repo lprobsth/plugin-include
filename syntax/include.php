@@ -136,6 +136,7 @@ class syntax_plugin_include_include extends DokuWiki_Syntax_Plugin {
             if ($format == 'metadata') {
                 $renderer->meta['relation']['references'][$id] = $exists;
                 $renderer->meta['relation']['haspart'][$id]    = $exists;
+                idx_get_indexer()->addMetaKeys($ID, 'relation_references', $id);
                 if (!$sect && !$flags['firstsec'] && !$flags['linkonly'] && !isset($renderer->meta['plugin_include']['secids'][$id])) {
                     $renderer->meta['plugin_include']['secids'][$id] = array('hid' => 'plugin_include__'.str_replace(':', '__', $id), 'pos' => $pos);
                 }
